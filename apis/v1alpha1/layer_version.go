@@ -23,31 +23,31 @@ import (
 // LayerVersionSpec defines the desired state of LayerVersion.
 type LayerVersionSpec struct {
 
-	// A list of compatible instruction set architectures (https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
-	CompatibleArchitectures []*string `json:"compatibleArchitectures,omitempty"`
-	// A list of compatible function runtimes (https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
-	// Used for filtering with ListLayers and ListLayerVersions.
-	//
-	// The following list includes deprecated runtimes. For more information, see
-	// Runtime deprecation policy (https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
-	CompatibleRuntimes []*string `json:"compatibleRuntimes,omitempty"`
-	// The function layer archive.
-	// +kubebuilder:validation:Required
-	Content *LayerVersionContentInput `json:"content"`
-	// The description of the version.
-	Description *string `json:"description,omitempty"`
-	// The name or Amazon Resource Name (ARN) of the layer.
-	// +kubebuilder:validation:Required
-	LayerName *string `json:"layerName"`
-	// The layer's software license. It can be any of the following:
-	//
-	//   - An SPDX license identifier (https://spdx.org/licenses/). For example,
-	//     MIT.
-	//
-	//   - The URL of a license hosted on the internet. For example, https://opensource.org/licenses/MIT.
-	//
-	//   - The full text of the license.
-	LicenseInfo *string `json:"licenseInfo,omitempty"`
+// A list of compatible instruction set architectures (https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
+CompatibleArchitectures []*string `json:"compatibleArchitectures,omitempty"`
+// A list of compatible function runtimes (https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+// Used for filtering with ListLayers and ListLayerVersions.
+// 
+// The following list includes deprecated runtimes. For more information, see
+// Runtime deprecation policy (https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy).
+CompatibleRuntimes []*string `json:"compatibleRuntimes,omitempty"`
+// The function layer archive.
+// +kubebuilder:validation:Required
+Content *LayerVersionContentInput `json:"content"`
+// The description of the version.
+Description *string `json:"description,omitempty"`
+// The name or Amazon Resource Name (ARN) of the layer.
+// +kubebuilder:validation:Required
+LayerName *string `json:"layerName"`
+// The layer's software license. It can be any of the following:
+// 
+//    * An SPDX license identifier (https://spdx.org/licenses/). For example,
+//    MIT.
+// 
+//    * The URL of a license hosted on the internet. For example, https://opensource.org/licenses/MIT.
+// 
+//    * The full text of the license.
+LicenseInfo *string `json:"licenseInfo,omitempty"`
 }
 
 // LayerVersionStatus defines the observed state of LayerVersion
@@ -57,14 +57,14 @@ type LayerVersionStatus struct {
 	// constructed ARN for the resource
 	// +kubebuilder:validation:Optional
 	ACKResourceMetadata *ackv1alpha1.ResourceMetadata `json:"ackResourceMetadata"`
-	// All CRS managed by ACK have a common `Status.Conditions` member that
+	// All CRs managed by ACK have a common `Status.Conditions` member that
 	// contains a collection of `ackv1alpha1.Condition` objects that describe
 	// the various terminal states of the CR and its backend AWS service API
 	// resource
 	// +kubebuilder:validation:Optional
 	Conditions []*ackv1alpha1.Condition `json:"conditions"`
 	// The date that the layer version was created, in ISO-8601 format (https://www.w3.org/TR/NOTE-datetime)
-	// (YYYY-MM-DDThh:mm:ss.sTZD).
+// (YYYY-MM-DDThh:mm:ss.sTZD).
 	// +kubebuilder:validation:Optional
 	CreatedDate *string `json:"createdDate,omitempty"`
 	// The ARN of the layer.
@@ -81,8 +81,8 @@ type LayerVersionStatus struct {
 type LayerVersion struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              LayerVersionSpec   `json:"spec,omitempty"`
-	Status            LayerVersionStatus `json:"status,omitempty"`
+	Spec   LayerVersionSpec   `json:"spec,omitempty"`
+	Status LayerVersionStatus `json:"status,omitempty"`
 }
 
 // LayerVersionList contains a list of LayerVersion
@@ -90,7 +90,7 @@ type LayerVersion struct {
 type LayerVersionList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []LayerVersion `json:"items"`
+	Items []LayerVersion `json:"items"`
 }
 
 func init() {
