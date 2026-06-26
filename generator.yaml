@@ -253,7 +253,6 @@ resources:
         template_path: hooks/eventsourcemapping/clean_destination_config.go.tpl
       sdk_update_post_build_request:
         template_path: hooks/eventsourcemapping/sdk_update_post_build_request.go.tpl
-
     tags:
       ignore: true
   FunctionUrlConfig:
